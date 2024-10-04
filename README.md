@@ -2,7 +2,7 @@
 
 ## Description
 
-App searches github repos with most stars in given period of time, includes search configurations.
+App searches github repositories with most stars in given period of time, includes search configurations.
 
 ## Project Setup
 
