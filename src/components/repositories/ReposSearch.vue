@@ -6,7 +6,7 @@ import type {
   RepositoriesLanguages,
 } from "@/stores/models/repositories.model";
 import { LANGUAGES_CONFIG, type LangKeys } from "@/utils/constants";
-import { computed, reactive } from "vue";
+import { computed, reactive, toRef } from "vue";
 
 const props = defineProps<{
   selectedLangs: RepositoriesLanguages[];
@@ -26,7 +26,14 @@ const emits = defineEmits<{
 const languageAdd = (id: string, name: string) => {
   const optionId = id as LangKeys;
   const config = { id: optionId, name } as RepositoriesLanguages;
-  reposFilter.languages = [...reposFilter.languages, config];
+  const languageExists = reposFilter.languages.find(
+    (language) => language.id === id
+  );
+  if (languageExists) {
+    return;
+  } else {
+    reposFilter.languages = [...reposFilter.languages, config];
+  }
 };
 
 const languageRemove = (id: LangKeys) => {

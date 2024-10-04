@@ -19,7 +19,7 @@ const filteredOptions = computed(() => {
   return props.options.filter((option) =>
     option.name
       .toLocaleLowerCase()
-      .includes(inputValue.value.toLocaleLowerCase()),
+      .includes(inputValue.value.toLocaleLowerCase())
   );
 });
 
