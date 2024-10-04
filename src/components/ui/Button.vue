@@ -5,7 +5,7 @@ withDefaults(
   }>(),
   {
     disabled: false,
-  },
+  }
 );
 const emits = defineEmits<{
   (e: "onBtnClick"): void;
@@ -15,7 +15,9 @@ const onBtnClick = () => emits("onBtnClick");
 </script>
 <template>
   <div class="button_container">
-    <button :disabled="disabled" @click="onBtnClick"><slot /></button>
+    <button :disabled="disabled" @click="onBtnClick" ariaLabel="repo-button">
+      <slot />
+    </button>
   </div>
 </template>
 <style lang="scss" scoped>

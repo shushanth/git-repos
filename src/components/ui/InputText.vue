@@ -13,7 +13,7 @@ withDefaults(
   {
     type: "text",
     placeholder: "Search",
-  },
+  }
 );
 
 const emits = defineEmits<{
@@ -34,6 +34,7 @@ const onInput = (event: Event) => {
     aria-label="search-filter"
     @input="onInput"
     :value="value"
+    ariaLabel="repo-input"
   />
 </template>
 <style scoped lang="scss">
