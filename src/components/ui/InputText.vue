@@ -13,7 +13,7 @@ withDefaults(
   {
     type: "text",
     placeholder: "Search",
-  }
+  },
 );
 
 const emits = defineEmits<{

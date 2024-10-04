@@ -84,7 +84,6 @@ export const useRepositoriesStore = defineStore({
       key?: string,
       updateExistingResults: boolean = false
     ) {
-      debugger;
       const totalPages = Math.ceil(data.total_count / ITEMS_PER_PAGE);
       const languageKey = key as LangKeys;
       this.repositoriesLoading(false);
@@ -111,9 +110,25 @@ export const useRepositoriesStore = defineStore({
         };
       }
     },
+    updateRepositoriesLanguages() {
+      const existingReposLanguages = Object.keys(
+        this.repositories.repos
+      ) as LangKeys[];
+      this.repositoriesSearch.languages.forEach((language) => {
+        if (existingReposLanguages.includes(language.id)) {
+          this.repositories = {
+            ...this.repositories,
+            repos: {
+              [language.id]: this.repositories.repos[language.id],
+            },
+          };
+        } else {
+          this.repositories.repos = {};
+        }
+      });
+    },
     fetchRepositories() {
       this.repositoriesLoading(true);
-
       const onSuccess = (
         data: {
           total_count: number;
@@ -126,7 +141,6 @@ export const useRepositoriesStore = defineStore({
       const onFailure = (error: Error) => {
         this.repositoriesError(true);
       };
-
       this.repositoriesSearch.languages.forEach(
         (language: RepositoriesLanguages) => {
           const filterQuery = buildQuery(
@@ -142,14 +156,14 @@ export const useRepositoriesStore = defineStore({
       );
     },
     updateRepositoriesSearchFilter(filters: RepositoriesStateSearch) {
-      const filtersFormat = {
-        ...filters,
-        datesRange: {
-          from: dateFormat(new Date(filters.datesRange.from)),
-          to: dateFormat(new Date(filters.datesRange.to)),
-        },
+      const datesRange = {
+        from: dateFormat(new Date(filters.datesRange.from)),
+        to: dateFormat(new Date(filters.datesRange.to)),
       };
-      this.repositoriesSearch = filtersFormat;
+
+      this.repositoriesSearch.datesRange = datesRange;
+      this.repositoriesSearch.languages = [...filters.languages];
+      this.repositoriesSearch.starsRange = filters.starsRange;
     },
     updatePageResults(language: LangKeys) {
       if (this.repositories.repos[language]) {

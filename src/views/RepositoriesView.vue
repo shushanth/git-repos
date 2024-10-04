@@ -10,11 +10,16 @@ import type { LangKeys } from "@/utils/constants";
 const { repositoriesSearch, getReposByLanguage, repositories } = storeToRefs(
   useRepositoriesStore()
 );
-const { fetchRepositories, updateRepositoriesSearchFilter, updatePageResults } =
-  useRepositoriesStore();
+const {
+  fetchRepositories,
+  updateRepositoriesSearchFilter,
+  updatePageResults,
+  updateRepositoriesLanguages,
+} = useRepositoriesStore();
 
 const onsubmitFilter = async (filters: RepositoriesStateSearch) => {
   await updateRepositoriesSearchFilter(filters);
+  await updateRepositoriesLanguages();
   await fetchRepositories();
 };
 
@@ -35,15 +40,6 @@ const updatePageByLanguage = (language: LangKeys) => {
         />
       </div>
       <div class="repositories_list">
-        <template v-if="repositories.loading && !repositories.error">
-          <Ui.Label label="loading..." />
-        </template>
-        <template v-if="repositories.error">
-          <Ui.Label
-            level="error"
-            label="Something went wrong, please try again"
-          />
-        </template>
         <template v-if="!repositories.loading && !repositories.error">
           <ReposList
             :reposList="getReposByLanguage"
@@ -51,6 +47,15 @@ const updatePageByLanguage = (language: LangKeys) => {
             :toDate="repositoriesSearch.datesRange.to"
             :starsCount="repositoriesSearch.starsRange"
             @onUpdatePageResults="updatePageByLanguage"
+          />
+        </template>
+        <template v-if="repositories.loading">
+          <Ui.Label label="loading..." />
+        </template>
+        <template v-if="repositories.error">
+          <Ui.Label
+            level="error"
+            label="Something went wrong, please try again"
           />
         </template>
       </div>

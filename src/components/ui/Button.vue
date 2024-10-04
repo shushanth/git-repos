@@ -5,7 +5,7 @@ withDefaults(
   }>(),
   {
     disabled: false,
-  }
+  },
 );
 const emits = defineEmits<{
   (e: "onBtnClick"): void;

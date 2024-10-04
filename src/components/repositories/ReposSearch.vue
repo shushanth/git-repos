@@ -52,7 +52,7 @@ const searchDisabled = computed(() => !reposFilter.languages.length);
 <template>
   <div class="filter_containers">
     <Ui.Heading title="Filters" level="h3" />
-    <div class="filter_containers_search">
+    <div class="filter_containers_form">
       <Ui.Bucket v-if="reposFilter.languages.length">
         <div class="selected_filters">
           <div
@@ -113,7 +113,7 @@ const searchDisabled = computed(() => !reposFilter.languages.length);
   @include column-container;
   margin: $spaces-l;
 
-  &_search {
+  &_form {
     padding: $spaces-l 0;
     .selected_filters {
       display: flex;
