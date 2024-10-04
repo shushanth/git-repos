@@ -7,7 +7,7 @@ withDefaults(defineProps<{ level?: Level }>(), { level: "primary" });
   <div
     :class="{
       bucket: true,
-      'bucket-primary': level === 'primary',
+      'bucket--primary': level === 'primary',
     }"
   >
     <slot />
@@ -19,8 +19,9 @@ withDefaults(defineProps<{ level?: Level }>(), { level: "primary" });
 .bucket {
   @include column-container;
   border-bottom: 1px solid $color-neonSilverLight;
-}
-.bucket-primary {
-  padding: $spaces-l 0 $spaces-xxl 0;
+
+  &--primary {
+    padding: $spaces-l 0 $spaces-xxl 0;
+  }
 }
 </style>

@@ -11,7 +11,7 @@ withDefaults(defineProps<{ level?: Level; label?: string }>(), {
     <p
       :class="{
         label: true,
-        error: level === 'error',
+        'label--error': level === 'error',
       }"
       v-if="label"
     >
@@ -20,7 +20,7 @@ withDefaults(defineProps<{ level?: Level; label?: string }>(), {
     <p
       :class="{
         label: true,
-        error: level === 'error',
+        'label--error': level === 'error',
       }"
       v-if="!label"
     >
@@ -37,9 +37,10 @@ withDefaults(defineProps<{ level?: Level; label?: string }>(), {
   .label {
     font-size: $font-s;
     padding: $spaces-m 0;
-  }
-  .error {
-    color: $color-redPrimary;
+
+    &--error {
+      color: $color-redPrimary;
+    }
   }
 }
 </style>

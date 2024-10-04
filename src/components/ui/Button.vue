@@ -14,8 +14,8 @@ const emits = defineEmits<{
 const onBtnClick = () => emits("onBtnClick");
 </script>
 <template>
-  <div class="button_container" @click="onBtnClick">
-    <button :disabled="disabled"><slot /></button>
+  <div class="button_container">
+    <button :disabled="disabled" @click="onBtnClick"><slot /></button>
   </div>
 </template>
 <style lang="scss" scoped>
