@@ -93,7 +93,7 @@ const searchDisabled = computed(() => !reposFilter.languages.length);
         <Ui.InputRange
           label="Stars"
           min="100"
-          max="100000"
+          max="10000"
           @onRangeUpdate="starsRangeUpdate"
         />
       </Ui.Bucket>
