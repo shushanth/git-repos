@@ -33,7 +33,8 @@ npm run test:unit
 - Handling accessibility, keyboard navigation on UI elements (search dropdown).
 - Validations on search filters, eg date picker limits (upper limit and lower limits).
 - Virtualized lists on each repositories list of languages shown.
-- Tests on page level components and store.
+- Handling button loading/error on pagination.
+- Tests on page components and store.
 
 ## Customize configuration
 
