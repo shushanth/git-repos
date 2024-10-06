@@ -22,9 +22,11 @@ const showReposCard = (lang: string): boolean => {
 const showReposPagination = (lang: string): boolean => {
   const repoLang = lang as LangKeys;
   const dataList = props.reposList[repoLang];
+  debugger;
   const paginationExists =
     dataList?.page.currentPage &&
-    dataList.page.currentPage <= dataList.page.totalPages;
+    dataList.page.currentPage <= dataList.page.totalPages &&
+    dataList.page.totalPages > 1;
   return !!paginationExists;
 };
 

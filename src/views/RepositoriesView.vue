@@ -18,9 +18,9 @@ const {
 } = useRepositoriesStore();
 
 const onsubmitFilter = async (filters: RepositoriesStateSearch) => {
-  await updateRepositoriesSearchFilter(filters);
-  await updateRepositoriesLanguages();
-  await fetchRepositories();
+  updateRepositoriesSearchFilter(filters);
+  updateRepositoriesLanguages();
+  fetchRepositories();
 };
 
 const updatePageByLanguage = (language: LangKeys) => {
