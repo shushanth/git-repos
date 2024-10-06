@@ -46,6 +46,13 @@ App uses router to show the search and list repositories view (default route). S
   - Shows pagination button instead on more items (not implemented fetching on scroll).
   - Responsiveness on the cards.
 
+<details>
+<summary>App screenshot </summary>
+
+![ScreenShot](./screenshots/app.png)
+
+</details>
+
 ### Improvements (needs to implemented)
 
 - Handling accessibility, keyboard navigation on UI elements (search dropdown).
